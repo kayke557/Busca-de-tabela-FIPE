@@ -33,7 +33,48 @@
     <div id="resultadoFipe" class="alert alert-secondary" style="display:none;"></div>
 </div>
 
-
+<script>
+    $(document).ready(function() {
+        // Botão de buscar CEP
+        $("#buscarCep").click(function() {
+            const cep = $("#cep").val().replace(/\D/g, '');
+            if (!cep) return alert("Digite um CEP válido!");
+            
+            $.get(`https://brasilapi.com.br/api/cep/v2/${cep}`)
+                .done(function(data) {
+                    $("#resultadoCep")
+                        .html(`${data.street}, ${data.neighborhood} - ${data.city}/${data.state}`)
+                        .show();
+                })
+                .fail(function() {
+                    $("#resultadoCep").html("CEP não encontrado!").show();
+                });
+        });
+    
+        // Botão de buscar FIPE
+        $("#buscarFipe").click(function() {
+            const codigo = $("#fipe").val();
+            if (!codigo) return alert("Digite um código FIPE válido!");
+    
+            $.get(`https://brasilapi.com.br/api/fipe/preco/v1/${codigo}`)
+                .done(function(data) {
+                    if (data && data.length > 0) {
+                        const carro = data[0];
+                        $("#resultadoFipe")
+                            .html(`Marca: ${carro.marca}, Modelo: ${carro.modelo}, Valor: ${carro.valor}`)
+                            .show();
+                    } else {
+                        $("#resultadoFipe").html("Código FIPE não encontrado!").show();
+                    }
+                })
+                .fail(function() {
+                    $("#resultadoFipe").html("Erro ao buscar dados FIPE!").show();
+                });
+        });
+    });
+    </script>
+    </body>
+    </html>
 </script>
 </body>
 </html>
