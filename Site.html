@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pesquisa de área para seguros</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="bg-light">
+<div class="container mt-5 p-4 bg-white rounded shadow-sm">
+    <h2 class="text-center mb-4">Pesquisa de área para seguros</h2>
+
+    <!-- CEP -->
+    <div class="mb-3">
+        <label for="cep" class="form-label">Digite CEP</label>
+        <div class="input-group">
+            <input type="text" id="cep" class="form-control" placeholder="Ex: 20550050">
+            <button id="buscarCep" class="btn btn-primary">Buscar CEP</button>
+        </div>
+    </div>
+
+    <div id="resultadoCep" class="alert alert-secondary" style="display:none;"></div>
+
+    <!-- FIPE -->
+    <div class="mt-4 mb-3">
+        <label for="fipe" class="form-label">Digite código da tabela FIPE</label>
+        <div class="input-group">
+            <input type="text" id="fipe" class="form-control" placeholder="Ex: 001004-9">
+            <button id="buscarFipe" class="btn btn-success">Buscar Valor do carro</button>
+        </div>
+    </div>
+
+    <div id="resultadoFipe" class="alert alert-secondary" style="display:none;"></div>
+</div>
+
+
+</script>
+</body>
+</html>
